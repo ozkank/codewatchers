@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <img src="logo.jpg" alt="Logo" id="logo">
+
+    <div id="login-container">
+        <h1>Welcome to the Memory Game</h1>
+        <form id="login-form">
+            <label for="username">Enter Your Name:</label>
+            <input type="text" id="username" required>
+            <button type="button" onclick="startGame()">Start Game</button>
+        </form>
+    </div>
+
+    <div id="game-container" style="display: none;">
+        <p id="timer">Time: 10 seconds</p>
+        <div class="grid" id="grid"></div>
+        <div id="buttons">
+            <button onclick="resetGame()">Reset</button>
+        </div>
+        <p id="scoreboard"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

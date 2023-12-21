@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+#login-container,
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.5s;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.card.open {
+    transform: rotateY(180deg);
+}
+
+#buttons {
+    margin-top: 20px;
+}
+
+#scoreboard {
+    color: #e74c3c;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#logo {
+    max-width: 10%;
+    margin: 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
