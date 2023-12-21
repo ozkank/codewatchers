@@ -40,14 +40,27 @@ function startGame() {
 }
 
 function resetGame() {
-    // Clear the grid and reset variables
-    grid.innerHTML = '';
+    // Close all open cards
+    const openCards = document.querySelectorAll('.card.open');
+    openCards.forEach(card => {
+        card.classList.remove('open');
+        card.textContent = '';
+    });
+
+    // Reset variables
     flippedCards = [];
     matches = 0;
     timer = 10;
-    clearInterval(timerInterval);
+
+    // Update the timer display
     document.getElementById('timer').textContent = `Time: ${timer} seconds`;
+
+    // Clear the scoreboard
     document.getElementById('scoreboard').textContent = '';
+
+    // Restart the timer
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
 }
 
 function flipCard() {
@@ -93,6 +106,10 @@ function checkMatch() {
 
 function updateTimer() {
     timer--; // Decrement the timer
+
+    // Ensure the timer doesn't go below zero
+    timer = Math.max(0, timer);
+
     // Display the timer value
     document.getElementById('timer').textContent = `Time: ${timer} seconds`;
 
