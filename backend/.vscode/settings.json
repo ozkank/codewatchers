@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d0613b05-1693-461b-9439-41a59f5f0e1b/resourceGroups/rg-securitypathdx-test-001/providers/Microsoft.Web/sites/codewatchers-be-api",
+    "appService.deploySubpath": "."
+}
