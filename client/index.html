@@ -29,11 +29,29 @@
         </form>
     </div>
 
-    
-
     <div id="game-container" class="container" style="display: none;">
         <p id="timer">Time: <span id="countdown"></span></p>
         <div class="grid" id="grid"></div>
+
+        <div class="image-container">
+            <div class="item-container">
+                <img src="./assets/img/glassTrash.png" alt="Recycle Image 1">
+                <label id="glass-count" class="item-label">0</label>
+            </div>
+            <div class="item-container">
+                <img src="./assets/img/paperTrash.png" alt="Recycle Image 2">
+                <label id="paper-count" class="item-label">0</label>
+            </div>
+            <div class="item-container">
+                <img src="./assets/img/metalTrash.png" alt="Recycle Image 3">
+                <label id="metal-count" class="item-label">0</label>
+            </div>
+            <div class="item-container">
+                <img src="./assets/img/organicTrash.png" alt="Recycle Image 4">
+                <label id="organic-count" class="item-label">0</label>
+            </div>
+        </div>
+
         <div id="buttons"></div>
         <p id="scoreboard"></p>
     </div>
