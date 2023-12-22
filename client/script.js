@@ -1,13 +1,13 @@
 let symbols = {
-    'animals': ['🐱', '🐶', '🦊', '🐘', '🐼', '🦁', '🐯', '🦓', '🐱', '🐶', '🦊', '🐘', '🐼', '🦁', '🐯', '🦓', '🐱', '🐶', '🦊', '🐘', '🐼', '🦁', '🐯', '🦓', '🐱', '🐶', '🦊', '🐘', '🐼', '🦁', '🐯', '🦓'],
-    'recycle': ['🍷', '🥂', '📄', '📃', '🔩', '🛠️', '🍏', '🍌']
+    'animals': ['🐱', '🐶', '🦊', '🐘', '🐼', '🦁', '🐯', '🦓', '🐪', '🦒', '🐕', '🐅', '🐨', '🐻', '🦔', '🐹', '🐰', '🦝', '🦙', '🐮', '🐷', '🐽', '🦛', '🐘', '🦍', '🦏', '🐪', '🐆', '🦓', '🦒', '🐊', '🐢', '🦎'],
+    'recycle': ['🍷', '🥂', '🥤', '🍸', '🍹', '🍺', '🍻', '🥛', '🍼', '🧊', '📄', '📃', '📑', '📜', '📰', '🗞️', '📖', '📚', '📔', '📒', '🔩', '🛠️', '⚙️', '🔧', '🔨', '🔗', '⛓️', '⚖️', '🔗', '🛢️', '🍏', '🍌', '🍎', '🍐', '🍊', '🍋', '🍓', '🍈', '🍒', '🍑']
 };
 let cards = [];
 let grid = document.getElementById('grid');
 let flippedCards = [];
 let matches = 0;
 let currentLevel = 0;
-let cardCounts = [2, 4, 6];
+let cardCounts = [4, 8, 16, 24, 28, 36];
 let countdownInterval;
 let timerSeconds = 0;
 let bestScoreAchieved = false;
@@ -15,7 +15,6 @@ let selectedCardType;
 
 const trashTypes = ['glass', 'paper', 'metal', 'organic'];
 
-// Initialize trash counts
 const trashCounts = {
     glass: 0,
     paper: 0,
@@ -58,16 +57,32 @@ function resetGame() {
     location.reload();
 }
 
-function startLevel() {
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
+function startLevel() {
     currentLevel++;
     grid.innerHTML = '';
     selectedCardType = document.getElementById('card-type').value;
 
     let currentCardCount = cardCounts[currentLevel - 1];
-    let levelSymbols = symbols[selectedCardType].slice(0, currentCardCount / 2);
+    let symbolsCopy = symbols[selectedCardType].slice();
+    let levelSymbols = [];
+
+    for (let i = 0; i < currentCardCount / 2; i++) {
+        const randomIndex = Math.floor(Math.random() * symbolsCopy.length);
+        levelSymbols.push(symbolsCopy[randomIndex]);
+
+        symbolsCopy.splice(randomIndex, 1);
+    }
+
     let levelCards = [...levelSymbols, ...levelSymbols];
-    levelCards.sort(() => Math.random() - 0.5);
+    levelCards = shuffleArray(levelCards);
 
     const columns = Math.sqrt(currentCardCount);
     grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
@@ -218,10 +233,10 @@ async function getScores() {
 
 function getTrashType(symbol) {
     const symbolToTrashMap = {
-        'glass': ['🍷', '🥂'],
-        'paper': ['📄', '📃'],
-        'metal': ['🔩', '🛠️'],
-        'organic': ['🍏', '🍌'],
+        'glass': ['🍷', '🥂', '🥤', '🍸', '🍹', '🍺', '🍻', '🥛', '🍼', '🧊'],
+        'paper': ['📄', '📃', '📑', '📜', '📰', '🗞️', '📖', '📚', '📔', '📒'],
+        'metal': ['🔩', '🛠️', '⚙️', '🔧', '🔨', '🔗', '⛓️', '⚖️', '🔗', '🛢️'],
+        'organic': ['🍏', '🍌', '🍎', '🍐', '🍊', '🍋', '🍓', '🍈', '🍒', '🍑'],
     };
 
     for (const [trashType, symbols] of Object.entries(symbolToTrashMap)) {
