@@ -35,6 +35,13 @@ function startGame() {
     document.getElementById('login-container').style.display = 'none';
     document.getElementById('game-container').style.display = 'flex';
 
+    selectedCardType = document.getElementById('card-type').value;
+    if (selectedCardType === 'animals') {
+        document.querySelector('.image-container').style.display = 'none';
+    } else {
+        document.querySelector('.image-container').style.display = 'flex';
+    }
+
     currentLevel = 0;
 
     const countdownElement = document.getElementById('countdown');
@@ -46,6 +53,11 @@ function startGame() {
     }, 1000);
     startLevel();
 }
+
+function resetGame() {
+    location.reload();
+}
+
 function startLevel() {
 
     currentLevel++;
@@ -94,8 +106,6 @@ function checkMatch() {
         // Update labels for each pair found
         updateTrashLabels();
 
-        card1.style.visibility = 'hidden';
-        card2.style.visibility = 'hidden';
         flippedCards = [];
         matches++;
 
@@ -150,11 +160,6 @@ async function winGame() {
         const congratulatoryMessage = message(bestScoreAchieved);
         document.getElementById('scoreboard').textContent = congratulatoryMessage;
 
-        const imageContainer = document.querySelector('.image-container');
-        imageContainer.style.marginTop = '-250px';
-        imageContainer.style.transform = 'scale(1.8)';
-
-
     } catch (error) {
         console.error('Error saving score or getting lowest score:', error);
     }
@@ -187,7 +192,9 @@ async function getScores() {
             const scoreItem = document.createElement('tr');
 
             const rankCell = document.createElement('td');
+
             rankCell.textContent = index + 1;
+            rankCell.style.fontWeight = 'bold';
 
             const usernameCell = document.createElement('td');
             usernameCell.classList.add('username');
@@ -196,6 +203,7 @@ async function getScores() {
             const scoreCell = document.createElement('td');
             scoreCell.classList.add('score');
             scoreCell.textContent = score.score;
+            scoreCell.style.fontWeight = 'bold';
 
             scoreItem.appendChild(rankCell);
             scoreItem.appendChild(usernameCell);
