@@ -109,7 +109,7 @@ async function winGame() {
     const username = document.getElementById('username').value;
   
     try {
-        const lowestScoresResponse = await fetch('http://localhost:3000/getLowestScore');
+        const lowestScoresResponse = await fetch('http://codewatchers-be-api.azurewebsites.net/getLowestScore');
         const lowestScores = await lowestScoresResponse.json();
 
         // Check if the new score is among the lowest scores
@@ -120,7 +120,7 @@ async function winGame() {
             document.getElementById('canvas').style.display = 'block';
         }
 
-        await fetch('http://localhost:3000/saveScore', {
+        await fetch('http://codewatchers-be-api.azurewebsites.net/saveScore', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ async function winGame() {
 async function getScores() {
     try {
         
-        const response = await fetch('http://localhost:3000/getScores');
+        const response = await fetch('http://codewatchers-be-api.azurewebsites.net/getScores');
         const scores = await response.json();
 
         const scoreList = document.getElementById('score-list');
