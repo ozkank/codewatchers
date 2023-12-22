@@ -166,9 +166,9 @@ async function winGame() {
 
         const message = (bestScoreAchieved) => {
             if (bestScoreAchieved) {
-                return `Congratulations! You completed all levels and achieved the best score, ${username}! \nYour score: ${timerSeconds}.`;
+                return `Congratulations! 🎉 You completed all levels and achieved the best score, ${username}! \nYour score: ${timerSeconds}.`;
             } else {
-                return `Congratulations! You completed all levels, ${username}!\nYour score: ${timerSeconds}.`;
+                return `Congratulations! 🎉 You completed all levels, ${username}!\nYour score: ${timerSeconds}.`;
             }
         };
 
