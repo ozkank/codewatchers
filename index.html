@@ -9,38 +9,51 @@
 </head>
 
 <body>
-  <!-- test -->
-    <img src="logo.jpg" alt="Logo" id="logo">
+    <header>
+        <img src="logo.png" alt="Logo" id="logo">
+        <h1>Memory Game</h1>
+    </header>
+    <canvas id="canvas" style="display: none;"></canvas>
 
-    <div id="login-container">
-        <h1>Welcome to the Memory Game</h1>
+    <div id="login-container" class="container">
+        <h2>Welcome to the Memory Game</h2>
         <form id="login-form">
             <label for="username">Enter Your Name:</label>
             <input type="text" id="username" required>
             <label for="card-type">Select Card Type:</label>
-            
             <select id="card-type" required>
                 <option value="animals">Animals</option>
                 <option value="recycle">Recycle Objects</option>
             </select>
-
-            
             <button type="button" onclick="startGame()">Start Game</button>
         </form>
     </div>
 
-    <div id="game-container" style="display: none;">
-        <p id="timer">Time:<span id="countdown"></span></p>
+    
+
+    <div id="game-container" class="container" style="display: none;">
+        <p id="timer">Time: <span id="countdown"></span></p>
         <div class="grid" id="grid"></div>
-        <div id="buttons">
-        </div>
+        <div id="buttons"></div>
         <p id="scoreboard"></p>
-       
     </div>
-    <canvas id="canvas" style="display: none;">Canvas is not supported in your browser.</canvas>
+
+    <div class="scoreboard-container container">
+        <h2>Scoreboard</h2>
+        <table id="score-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="score-list"></tbody>
+        </table>
+    </div>
+
     <script src="script.js"></script>
     <script src="fireworks.js"></script>
-    
 </body>
 
 </html>
